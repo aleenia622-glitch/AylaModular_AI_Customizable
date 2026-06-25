@@ -1,6 +1,6 @@
-# 🩵 Ayla Bot - Assistente Virtual Modular & Agente de Automação para Windows 11
+# 🩵 Aylamodular AI Customizable - Assistente Virtual Modular & Agente de Automação para Windows 11
 
-Ayla é um projeto de assistente virtual altamente integrada ao sistema operacional Windows 11, projetada com foco em modularidade, autonomia, controle de sistema e integração multiplataforma (Terminal e Discord). O bot combina modelos de linguagem avançados (LLMs) com um conjunto de ferramentas nativas para permitir controle por voz, automação de tarefas e interações dinâmicas.
+Aylamodular é um projeto de assistente virtual altamente integrada ao sistema operacional Windows 11, projetada com foco em modularidade, autonomia, controle de sistema e integração multiplataforma (Terminal e Discord). O bot combina modelos de linguagem avançados (LLMs) com um conjunto de ferramentas nativas para permitir controle por voz, automação de tarefas e interações dinâmicas.
 
 ---
 
@@ -42,7 +42,7 @@ O projeto Ayla foi desenvolvido para agir como um **agente inteligente** capaz d
 
 O projeto é estruturado em módulos independentes escritos em **Python 3.10+**. As dependências de sistema e bibliotecas chave incluem:
 
-*   **`google-generativeai` & `openai`:** APIs para processamento dos prompts, raciocínio lógico e tomada de decisão através de Function Calling.
+*   **`google-genai` & `openai`:** APIs para processamento dos prompts, raciocínio lógico e tomada de decisão através de Function Calling.
 *   **`discord.py`:** API de comunicação em tempo real e interface de chat do bot.
 *   **`pyautogui` & `opencv-python`:** Captura de tela, manipulação de cursor, teclado e visão computacional básica.
 *   **`psutil`:** Monitoramento de hardware, consumo de memória, uso de disco e gerenciamento de processos do sistema.
