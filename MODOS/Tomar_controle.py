@@ -169,7 +169,7 @@ def _sem_acento(texto: str) -> str:
 def _resolver_destinatario_discord(destinatario: str = "") -> tuple[str, int] | None:
     alvo = _sem_acento(destinatario or "")
     owner_id = _discord_owner_id()
-    aliases_dona = {"", "dona", "mae", "mamae", "aleenia", "alenia"}
+    aliases_dona = {"", "dona", "mae", "mamae"}
 
     if alvo in aliases_dona and owner_id:
         return "dona", owner_id
