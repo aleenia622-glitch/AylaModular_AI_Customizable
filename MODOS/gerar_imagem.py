@@ -1,6 +1,6 @@
 """
 🎨 Módulo: Geração de Imagens com SiliconFlow e Qwen/Qwen-Image-Edit
-Exclusivo para a dona Aleenia!
+Exclusivo para a dona!
 Usa o modelo Qwen/Qwen-Image-Edit via SiliconFlow.
 """
 
