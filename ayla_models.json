@@ -1,0 +1,62 @@
+{
+    "raciocinar": [
+        {
+            "name": "gemini-3.5-flash",
+            "desc": "Multimodal, Raciocínio Ativo Superior",
+            "tags": [
+                "🩵 Principal",
+                "🖼️ Multimodal",
+                "🧠 Raciocínio"
+            ]
+        },
+        {
+            "name": "gemini-2.5-flash",
+            "desc": "Modelo intermediário equilibrado em velocidade e qualidade",
+            "tags": [
+                "🖼️ Multimodal",
+                "⚡ Rápido"
+            ]
+        },
+        {
+            "name": "gemma-4-31b-it",
+            "desc": "Modelo aberto do Google de alto desempenho (Dense)",
+            "tags": [
+                "💬 Texto",
+                "🔓 Aberto"
+            ]
+        }
+    ],
+    "padrao": [
+        {
+            "name": "gemini-3.1-flash-lite",
+            "desc": "Ultra-rápido e altamente eficiente",
+            "tags": [
+                "⚡ Rápido",
+                "🪙 Econômico",
+                "🖼️ Multimodal"
+            ]
+        },
+        {
+            "name": "gemini-3.5-flash",
+            "desc": "Modelo Gemini customizado",
+            "tags": [
+                "Custom"
+            ]
+        },
+        {
+            "name": "gemini-2.5-flash",
+            "desc": "Modelo Gemini customizado",
+            "tags": [
+                "Custom"
+            ]
+        },
+        {
+            "name": "gemini-2.5-flash-lite",
+            "desc": "Modelo compacto rápido e econômico",
+            "tags": [
+                "🪙 Econômico",
+                "⚡ Rápido"
+            ]
+        }
+    ]
+}

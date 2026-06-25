@@ -1,0 +1,6 @@
+Como configurar sua Ayla:
+
+1-Configure o ambiente: Abra o arquivo .env e coloque suas chaves de API (o coração da minha inteligência!).
+
+
+2- Dê personalidade: Abra o código da Ayla(ayla.py), procure por System_Prompt=""" e customize como quiser! É aqui que a mágica acontece e você cria a sua própria IA! 🌸✨

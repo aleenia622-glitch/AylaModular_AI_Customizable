@@ -1,0 +1,16 @@
+{
+    "public_mode": true,
+    "allowed_tools": [
+        "calcular",
+        "cara_ou_coroa",
+        "consultar_clima",
+        "conversor_moeda",
+        "conversor_unidades",
+        "dado_rpg",
+        "horario_mundial",
+        "informacao_astronautas",
+        "jokenpo",
+        "pesquisar_pokedex",
+        "sortear"
+    ]
+}
