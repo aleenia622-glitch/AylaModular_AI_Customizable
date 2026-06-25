@@ -42,7 +42,7 @@ O projeto Ayla foi desenvolvido para agir como um **agente inteligente** capaz d
 
 O projeto é estruturado em módulos independentes escritos em **Python 3.10+**. As dependências de sistema e bibliotecas chave incluem:
 
-*   **`google-genai` & `openai`:** APIs para processamento dos prompts, raciocínio lógico e tomada de decisão através de Function Calling.
+*   **`google-genai`** APIs para processamento dos prompts, raciocínio lógico e tomada de decisão através de Function Calling.
 *   **`discord.py`:** API de comunicação em tempo real e interface de chat do bot.
 *   **`pyautogui` & `opencv-python`:** Captura de tela, manipulação de cursor, teclado e visão computacional básica.
 *   **`psutil`:** Monitoramento de hardware, consumo de memória, uso de disco e gerenciamento de processos do sistema.
