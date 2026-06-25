@@ -71,13 +71,10 @@ pip install -r requirements.txt
 ```
 
 ### 4. Inicialização do Projeto
-Para rodar a interface gráfica (GUI) integrada com o bot:
-```bash
-python ayla_gui.py
-```
+
 Para execução direta e leve via terminal de comando:
 ```bash
-python main.py
+python ayla.py
 ```
 
 ---
