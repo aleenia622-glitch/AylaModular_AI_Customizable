@@ -1,0 +1,20 @@
+{
+    "screenshot_before_response": false,
+    "voice_chat_enabled": true,
+    "voice_chat_hotkey": "end",
+    "voice_chat_style_id": 3,
+    "last_active_channel_id": 1510461130705997975,
+    "selected_mic_name": "",
+    "tts_engine": "fish_audio",
+    "fish_audio_api_key": "",
+    "fish_audio_voice_id": "95a9be3177d24c3b815000752029d4da",
+    "sprite_window_x": 1140,
+    "sprite_window_y": 463,
+    "cozylife_bulb_ip": "",
+    "public_mode": true,
+    "selected_speaker_name": "",
+    "live_call_mode": false,
+    "mix_system_audio": true,
+    "stt_engine": "auto",
+    "groq_api_key": ""
+}
