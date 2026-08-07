@@ -1,5 +1,5 @@
 # 🩵 Aylamodular AI Customizable - Assistente Virtual Modular & Agente de Automação para Windows 11
-
+![ayla](https://i.imgur.com/t7q5wrC.png)
 Aylamodular é um projeto de assistente virtual altamente integrada ao sistema operacional Windows 11, projetada com foco em modularidade, autonomia, controle de sistema e integração multiplataforma (Terminal e Discord). O bot combina modelos de linguagem avançados (LLMs) com um conjunto de ferramentas nativas para permitir controle por voz, automação de tarefas e interações dinâmicas.
 
 ---
