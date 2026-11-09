@@ -1,0 +1,22 @@
+[Unit]
+Description=Ayla no host
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/opt/ayla
+EnvironmentFile=/opt/ayla/.env
+Environment=PYTHONUNBUFFERED=1
+Environment=ABRIR_GUI=false
+Environment=AYLA_HOST_ROLE=host
+ExecStart=/usr/bin/python3 /opt/ayla/Ayla.py
+Restart=on-failure
+RestartSec=5
+KillSignal=SIGINT
+TimeoutStopSec=30
+SuccessExitStatus=0 130 143
+
+[Install]
+WantedBy=multi-user.target

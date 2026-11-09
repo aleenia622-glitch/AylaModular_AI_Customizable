@@ -1,0 +1,17 @@
+[Unit]
+Description=Agente de transferência da Ayla
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/opt/ayla/ayla_host
+EnvironmentFile=/opt/ayla/.env
+ExecStart=/usr/bin/python3 ayla_host_api.py --bind 127.0.0.1 --port 8765 --app-dir /opt/ayla --data-dir /opt/ayla/.ayla-host-runtime
+Restart=on-failure
+RestartSec=3
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
