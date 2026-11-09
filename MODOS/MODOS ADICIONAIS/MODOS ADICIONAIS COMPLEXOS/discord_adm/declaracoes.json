@@ -1,0 +1,776 @@
+[
+  {
+    "name": "discord_adm_guild_info",
+    "description": "Retorna informações detalhadas do servidor atual (dono, contagem de membros, cargos, canais, nível de impulso, verificação, etc.).",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "guild_id": {
+          "type": "string",
+          "description": "ID opcional da guilda."
+        }
+      }
+    }
+  },
+  {
+    "name": "discord_adm_get_audit_logs",
+    "description": "Busca registros recentes do registro de auditoria (Audit Log) do servidor com filtros opcionais.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "limit": {
+          "type": "integer",
+          "description": "Quantidade de registros (max 30)."
+        },
+        "action_type": {
+          "type": "string",
+          "description": "Tipo de ação (ex: ban, kick, channel_create, role_update)."
+        },
+        "user_id": {
+          "type": "string",
+          "description": "ID ou nome do usuário autor da ação."
+        }
+      }
+    }
+  },
+  {
+    "name": "discord_adm_edit_guild",
+    "description": "Altera configurações principais do servidor (nome, descrição, nível de verificação, filtro explícito, timeout AFK).",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Novo nome da guilda."
+        },
+        "description": {
+          "type": "string",
+          "description": "Nova descrição da guilda."
+        },
+        "verification_level": {
+          "type": "string",
+          "description": "Nível de verificação (none, low, medium, high, extreme)."
+        },
+        "explicit_content_filter": {
+          "type": "string",
+          "description": "Filtro explícito (disabled, no_role, all_members)."
+        },
+        "afk_timeout": {
+          "type": "integer",
+          "description": "Timeout AFK em segundos (60, 300, 900, 1800, 3600)."
+        }
+      }
+    }
+  },
+  {
+    "name": "discord_adm_ban_member",
+    "description": "Bane diretamente pelo ID ou menção (<@ID>), sem consultar ou listar membros antes. Resolve o alvo internamente. Sucesso já confirma o banimento; não liste banidos para reconfirmar. Permite motivo e apagar mensagens de até 7 dias.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string",
+          "description": "ID ou menção do usuário a banir."
+        },
+        "reason": {
+          "type": "string",
+          "description": "Motivo do banimento."
+        },
+        "delete_message_days": {
+          "type": "integer",
+          "description": "Dias de mensagens a apagar (0 a 7)."
+        }
+      },
+      "required": [
+        "user_id"
+      ]
+    }
+  },
+  {
+    "name": "discord_adm_unban_member",
+    "description": "Desbane um usuário previamente banido do servidor pelo ID.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string",
+          "description": "ID numérico do usuário a desbanir."
+        },
+        "reason": {
+          "type": "string",
+          "description": "Motivo do desbanimento."
+        }
+      },
+      "required": [
+        "user_id"
+      ]
+    }
+  },
+  {
+    "name": "discord_adm_list_bans",
+    "description": "Lista todos os banimentos ativos no servidor.",
+    "parameters": {
+      "type": "object",
+      "properties": {}
+    }
+  },
+  {
+    "name": "discord_adm_kick_member",
+    "description": "Expulsa (Kick) um membro do servidor.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string",
+          "description": "ID, menção ou nome do membro a expulsar."
+        },
+        "reason": {
+          "type": "string",
+          "description": "Motivo da expulsão."
+        }
+      },
+      "required": [
+        "user_id"
+      ]
+    }
+  },
+  {
+    "name": "discord_adm_timeout_member",
+    "description": "Aplica ou remove castigo (Timeout / Mute temporário) de um membro no servidor.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string",
+          "description": "ID, menção ou nome do membro."
+        },
+        "duration_minutes": {
+          "type": "integer",
+          "description": "Duração do castigo em minutos."
+        },
+        "remove_timeout": {
+          "type": "boolean",
+          "description": "Se true, remove o castigo ativo."
+        },
+        "reason": {
+          "type": "string",
+          "description": "Motivo do castigo."
+        }
+      },
+      "required": [
+        "user_id"
+      ]
+    }
+  },
+  {
+    "name": "discord_adm_edit_member",
+    "description": "Altera apelido ou estado de voz individual (mute, deafen, mover de canal ou desconectar) de um membro.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string",
+          "description": "ID ou nome do membro."
+        },
+        "nickname": {
+          "type": "string",
+          "description": "Novo apelido."
+        },
+        "mute": {
+          "type": "boolean",
+          "description": "Silenciar no servidor (voice)."
+        },
+        "deafen": {
+          "type": "boolean",
+          "description": "Ensurdecer no servidor (voice)."
+        },
+        "voice_channel_id": {
+          "type": "string",
+          "description": "ID/Nome do canal de voz para mover."
+        },
+        "disconnect_voice": {
+          "type": "boolean",
+          "description": "Se true, desconecta da call de voz."
+        }
+      },
+      "required": [
+        "user_id"
+      ]
+    }
+  },
+  {
+    "name": "discord_adm_prune_members",
+    "description": "Simula ou executa o expulso em massa (Prune) de membros inativos sem cargo no servidor.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "days": {
+          "type": "integer",
+          "description": "Dias de inatividade (1 a 30)."
+        },
+        "simulate_only": {
+          "type": "boolean",
+          "description": "Se true, apenas estima sem expulsar."
+        }
+      }
+    }
+  },
+  {
+    "name": "discord_adm_list_members",
+    "description": "Consulta e lista os integrantes/membros do servidor com suporte a filtros por cargo e busca de nome.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "role_id_or_name": {
+          "type": "string",
+          "description": "ID ou nome de cargo para filtrar membros."
+        },
+        "name_filter": {
+          "type": "string",
+          "description": "Busca textual por parte do nome ou apelido."
+        },
+        "limit": {
+          "type": "integer",
+          "description": "Quantidade máxima de membros a exibir (max 100)."
+        },
+        "include_bots": {
+          "type": "boolean",
+          "description": "Se true, inclui contas de bots na lista."
+        }
+      }
+    }
+  },
+  {
+    "name": "discord_adm_read_channel_messages",
+    "description": "Lê em lote a quantidade exata de mensagens recente que você especificar de um canal de texto ou thread do Discord (ex: 5, 10, 20, 50 até 100 mensagens).",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "channel_id_or_name": {
+          "type": "string",
+          "description": "ID ou nome do canal de texto ou thread."
+        },
+        "limit": {
+          "type": "integer",
+          "description": "A quantidade exata de mensagens que você quer ler no lote (ex: 5, 10, 20, 50, até 100)."
+        },
+        "before_message_id": {
+          "type": "string",
+          "description": "ID opcional de mensagem para ler o histórico anterior a ela."
+        }
+      },
+      "required": [
+        "channel_id_or_name",
+        "limit"
+      ]
+    }
+  },
+  {
+    "name": "discord_adm_create_role",
+    "description": "Cria um novo cargo no servidor com nome, cor HEX, permissões e propriedades de destaque.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Nome do cargo."
+        },
+        "color_hex": {
+          "type": "string",
+          "description": "Código de cor HEX (ex: #FF0000)."
+        },
+        "hoist": {
+          "type": "boolean",
+          "description": "Exibir separadamente na lista de membros."
+        },
+        "mentionable": {
+          "type": "boolean",
+          "description": "Se pode ser mencionado por todos."
+        }
+      },
+      "required": [
+        "name"
+      ]
+    }
+  },
+  {
+    "name": "discord_adm_edit_role",
+    "description": "Edita propriedades e permissões de um cargo existente.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "role_id_or_name": {
+          "type": "string",
+          "description": "ID ou nome do cargo."
+        },
+        "name": {
+          "type": "string",
+          "description": "Novo nome."
+        },
+        "color_hex": {
+          "type": "string",
+          "description": "Nova cor HEX."
+        },
+        "hoist": {
+          "type": "boolean",
+          "description": "Alterar hoist."
+        },
+        "mentionable": {
+          "type": "boolean",
+          "description": "Alterar mencionável."
+        }
+      },
+      "required": [
+        "role_id_or_name"
+      ]
+    }
+  },
+  {
+    "name": "discord_adm_delete_role",
+    "description": "Exclui um cargo do servidor.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "role_id_or_name": {
+          "type": "string",
+          "description": "ID ou nome do cargo a deletar."
+        }
+      },
+      "required": [
+        "role_id_or_name"
+      ]
+    }
+  },
+  {
+    "name": "discord_adm_manage_member_roles",
+    "description": "Adiciona ou remove cargos de um ou mais membros do Discord.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string",
+          "description": "ID(s) ou nome(s) do(s) membro(s). Pode enviar múltiplos IDs separados por vírgula para processamento em lote!"
+        },
+        "role_id_or_name": {
+          "type": "string",
+          "description": "ID ou nome do cargo."
+        },
+        "action": {
+          "type": "string",
+          "description": "'add' para adicionar ou 'remove' para remover."
+        }
+      },
+      "required": [
+        "user_id",
+        "role_id_or_name"
+      ]
+    }
+  },
+  {
+    "name": "discord_adm_list_channels",
+    "description": "Lista todos os canais do servidor Discord (Guild) detalhadamente com seus nomes, IDs, tipos, categorias e propriedades.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "channel_type": {
+          "type": "string",
+          "description": "Filtro opcional por tipo: 'text', 'voice', 'category', 'news', 'forum', 'stage' ou 'thread'."
+        },
+        "category_id_or_name": {
+          "type": "string",
+          "description": "Filtrar apenas canais de uma categoria específica (ID ou nome)."
+        },
+        "include_threads": {
+          "type": "boolean",
+          "description": "Se true, inclui threads ativas dentro dos canais de texto/fórum."
+        },
+        "group_by_category": {
+          "type": "boolean",
+          "description": "Se true (padrão), agrupa os canais por categoria. Se false, exibe em lista sequencial."
+        },
+        "guild_id": {
+          "type": "string",
+          "description": "ID opcional da guilda."
+        }
+      }
+    }
+  },
+  {
+    "name": "discord_adm_get_channel_info",
+    "description": "Obtém informações e propriedades detalhadas de um canal específico no Discord pelo ID ou nome (posição, tópico, permissões, threads, membros conectadas).",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "channel_id_or_name": {
+          "type": "string",
+          "description": "ID ou nome do canal para obter detalhes."
+        },
+        "guild_id": {
+          "type": "string",
+          "description": "ID opcional da guilda."
+        }
+      },
+      "required": [
+        "channel_id_or_name"
+      ]
+    }
+  },
+  {
+    "name": "discord_adm_create_channel",
+    "description": "Cria um novo canal (texto, voz, categoria, anúncio ou fórum) no servidor.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Nome do canal."
+        },
+        "channel_type": {
+          "type": "string",
+          "description": "text, voice, category, news ou forum."
+        },
+        "topic": {
+          "type": "string",
+          "description": "Tópico do canal."
+        },
+        "category_id_or_name": {
+          "type": "string",
+          "description": "ID ou nome da categoria pai."
+        },
+        "slowmode_seconds": {
+          "type": "integer",
+          "description": "Modo lento em segundos."
+        },
+        "nsfw": {
+          "type": "boolean",
+          "description": "Canal NSFW."
+        }
+      },
+      "required": [
+        "name"
+      ]
+    }
+  },
+  {
+    "name": "discord_adm_edit_channel",
+    "description": "Modifica configurações de um canal (nome, tópico, slowmode, nsfw, bitrate, limite de usuários).",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "channel_id_or_name": {
+          "type": "string",
+          "description": "ID ou nome do canal."
+        },
+        "name": {
+          "type": "string",
+          "description": "Novo nome."
+        },
+        "topic": {
+          "type": "string",
+          "description": "Novo tópico."
+        },
+        "slowmode_seconds": {
+          "type": "integer",
+          "description": "Modo lento em segundos."
+        },
+        "nsfw": {
+          "type": "boolean",
+          "description": "Flag NSFW."
+        }
+      },
+      "required": [
+        "channel_id_or_name"
+      ]
+    }
+  },
+  {
+    "name": "discord_adm_delete_channel",
+    "description": "Exclui um canal do servidor.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "channel_id_or_name": {
+          "type": "string",
+          "description": "ID ou nome do canal a excluir."
+        }
+      },
+      "required": [
+        "channel_id_or_name"
+      ]
+    }
+  },
+  {
+    "name": "discord_adm_purge_messages",
+    "description": "Apaga em massa N mensagens de um canal de texto (com filtro opcional por usuário).",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "channel_id_or_name": {
+          "type": "string",
+          "description": "ID ou nome do canal."
+        },
+        "limit": {
+          "type": "integer",
+          "description": "Quantidade de mensagens a apagar (max 1000)."
+        },
+        "user_id_filter": {
+          "type": "string",
+          "description": "ID ou nome de usuário opcional para apagar apenas mensagens dele."
+        }
+      },
+      "required": [
+        "channel_id_or_name"
+      ]
+    }
+  },
+  {
+    "name": "discord_adm_set_channel_permissions",
+    "description": "Configura sobrescritas de permissão (Permission Overwrites) em um canal para um cargo ou membro.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "channel_id_or_name": {
+          "type": "string",
+          "description": "ID ou nome do canal."
+        },
+        "target_id_or_name": {
+          "type": "string",
+          "description": "ID ou nome do cargo ou membro."
+        },
+        "target_type": {
+          "type": "string",
+          "description": "'role' ou 'member'."
+        },
+        "allow_permissions": {
+          "type": "string",
+          "description": "Permissões separadas por vírgula para permitir (ex: send_messages,view_channel)."
+        },
+        "deny_permissions": {
+          "type": "string",
+          "description": "Permissões separadas por vírgula para negar."
+        },
+        "reset_permissions": {
+          "type": "boolean",
+          "description": "Se true, remove sobrescritas e reseta para o padrão."
+        }
+      },
+      "required": [
+        "channel_id_or_name",
+        "target_id_or_name"
+      ]
+    }
+  },
+  {
+    "name": "discord_adm_manage_thread",
+    "description": "Cria, tranca, destranca, arquiva ou exclui threads em canais de texto.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "channel_id_or_name": {
+          "type": "string",
+          "description": "Canal de texto ou thread."
+        },
+        "action": {
+          "type": "string",
+          "description": "'create', 'edit' ou 'delete'."
+        },
+        "name": {
+          "type": "string",
+          "description": "Nome da thread."
+        },
+        "archive": {
+          "type": "boolean",
+          "description": "Arquivar thread."
+        },
+        "lock": {
+          "type": "boolean",
+          "description": "Trancar thread."
+        }
+      }
+    }
+  },
+  {
+    "name": "discord_adm_add_emoji",
+    "description": "Cria um novo emoji personalizado no servidor Discord usando uma imagem em anexo enviada pelo usuário na mensagem, uma URL ou caminho de arquivo local.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Nome desejado para o emoji (se omitido, será gerado automaticamente a partir do nome do arquivo em anexo)."
+        },
+        "image_url_or_path": {
+          "type": "string",
+          "description": "URL ou caminho local opcional da imagem. Se omitido, pegará a imagem em anexo enviada na mensagem."
+        },
+        "guild_id": {
+          "type": "string",
+          "description": "ID opcional do servidor Discord."
+        }
+      }
+    }
+  },
+  {
+    "name": "discord_adm_add_sticker",
+    "description": "Cria uma nova figurinha (sticker) no servidor usando imagem em anexo ou URL.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Nome desejado para a figurinha/sticker (2 a 30 caracteres)."
+        },
+        "description": {
+          "type": "string",
+          "description": "Descrição da figurinha/sticker (opcional, 2 a 100 caracteres)."
+        },
+        "emoji": {
+          "type": "string",
+          "description": "Emoji unicode associado para busca da figurinha (ex: 😀, ✨, 🔥). Padrão: 😀"
+        },
+        "image_url_or_path": {
+          "type": "string",
+          "description": "URL ou caminho local opcional da imagem. Se omitido, pegará a imagem em anexo enviada na mensagem."
+        },
+        "guild_id": {
+          "type": "string",
+          "description": "ID opcional do servidor Discord."
+        }
+      }
+    }
+  },
+  {
+    "name": "discord_adm_manage_emojis_stickers",
+    "description": "Cria ou deleta emojis e stickers customizados na guilda a partir de anexo do Discord, URL ou arquivo local.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "description": "'create_emoji', 'delete_emoji', 'create_sticker' ou 'delete_sticker'."
+        },
+        "name": {
+          "type": "string",
+          "description": "Nome do emoji/sticker a criar (se omitido ao criar emoji/sticker, usa o anexo enviado)."
+        },
+        "image_url_or_path": {
+          "type": "string",
+          "description": "URL ou caminho local opcional da imagem (se omitido, pega o anexo do Discord)."
+        },
+        "target_id_or_name": {
+          "type": "string",
+          "description": "Nome ou ID para deletar."
+        }
+      }
+    }
+  },
+  {
+    "name": "discord_adm_manage_invites",
+    "description": "Lista, cria ou revoga links de convite (Invites) do servidor.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "description": "'list', 'create' ou 'delete'."
+        },
+        "channel_id_or_name": {
+          "type": "string",
+          "description": "Canal para criar convite."
+        },
+        "invite_code": {
+          "type": "string",
+          "description": "Código do convite para deletar."
+        },
+        "max_age_seconds": {
+          "type": "integer",
+          "description": "Validade em segundos (default 86400)."
+        }
+      }
+    }
+  },
+  {
+    "name": "discord_adm_manage_webhooks",
+    "description": "Lista, cria ou deleta webhooks em canais do servidor.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "description": "'list', 'create' ou 'delete'."
+        },
+        "channel_id_or_name": {
+          "type": "string",
+          "description": "Canal do webhook."
+        },
+        "name": {
+          "type": "string",
+          "description": "Nome do webhook a criar."
+        },
+        "webhook_id_or_name": {
+          "type": "string",
+          "description": "ID ou nome do webhook a deletar."
+        }
+      }
+    }
+  },
+  {
+    "name": "discord_adm_manage_scheduled_events",
+    "description": "Lista, cria ou cancela eventos agendados no servidor.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "description": "'list' ou 'cancel'."
+        },
+        "event_id": {
+          "type": "string",
+          "description": "ID ou nome do evento a cancelar."
+        }
+      }
+    }
+  },
+  {
+    "name": "discord_adm_manage_voice",
+    "description": "Realiza ações de moderação de voz em massa em um canal (mute_all, unmute_all, deafen_all, move_all, disconnect_all).",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "description": "'mute_all', 'unmute_all', 'deafen_all', 'move_all' ou 'disconnect_all'."
+        },
+        "channel_id_or_name": {
+          "type": "string",
+          "description": "Canal de voz de origem."
+        },
+        "target_channel_id_or_name": {
+          "type": "string",
+          "description": "Canal de voz de destino (para move_all)."
+        }
+      },
+      "required": [
+        "action",
+        "channel_id_or_name"
+      ]
+    }
+  },
+  {
+    "name": "discord_adm_manage_templates_integrations",
+    "description": "Gerencia templates de servidor e lista integrações ativas.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "description": "'list_integrations' ou 'create_template'."
+        },
+        "name": {
+          "type": "string",
+          "description": "Nome do template a criar."
+        }
+      }
+    }
+  }
+]
