@@ -1,0 +1,47 @@
+Pillow
+PyAutoGUI; sys_platform == "win32"
+PyGetWindow; sys_platform == "win32"
+beautifulsoup4
+colorama
+comtypes; sys_platform == "win32"
+customtkinter
+ddgs
+-r requirements-call.txt
+duckduckgo_search
+httpx
+openai>=1.0
+openpyxl
+psutil
+pycaw; sys_platform == "win32"
+pygame-ce
+pyperclip
+python-docx
+python-pptx
+python-dotenv
+pypdf
+requests
+rich
+send2trash
+spotipy
+winotify; sys_platform == "win32"
+flet
+opencv-python-headless
+yt-dlp
+youtube-transcript-api
+# O CLI opcional agy é instalado separadamente; configure AYLA_AGY_EXECUTABLE.
+PySide6
+websockets>=14
+numpy
+sounddevice
+soundfile
+groq
+moviepy>=2
+python-xlib>=0.33; sys_platform == "linux"
+keyboard; sys_platform == "win32"
+pywin32; sys_platform == "win32"
+winsdk; sys_platform == "win32"
+audioop-lts; python_version >= "3.13"
+
+# WebSocket TTS e reprodução de áudio
+msgpack>=1.0
+PyAudio>=0.2.14

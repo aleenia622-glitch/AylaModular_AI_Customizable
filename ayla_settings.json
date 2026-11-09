@@ -1,0 +1,11 @@
+{
+  "temperature": 1.0,
+  "max_tokens": 8192,
+  "voice_chat_enabled": false,
+  "fish_audio_api_key": "",
+  "fish_audio_voice_id": "",
+  "groq_api_key": "",
+  "gemini_api_key": "",
+  "blog_base_url": "",
+  "blog_api_token": ""
+}

@@ -1,0 +1,5 @@
+# Versões usadas pelo adaptador local ayla_discord_voice.py.
+discord.py[voice]==2.7.1
+discord-ext-voice-recv==0.5.2a179
+davey==0.1.5
+webrtcvad-wheels==2.0.14.post1
